@@ -73,5 +73,5 @@ jobs:
         run: npm run build
 
       #Run Test
-      - name: Run Test
+      - name: Run test
         run: npm test
