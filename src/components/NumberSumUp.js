@@ -1,55 +1,52 @@
-import React, {useState} from 'react';
-import axios from "axios";
-import {BaseUrl} from "../consistents";
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function NumberSumUp(props) {
-    const [startNum, setStartNum] = useState(0)
-    const [endNum, setEndNum] = useState(0)
-    const [result, setResult] = useState(0)
-
-    function start_num_handler(e) {
-        setStartNum(e.target.value)
-    }
-
-    function end_num_handler(e) {
-        setEndNum(e.target.value)
-    }
-
-    function cal() {
-        let data = JSON.stringify({
-            "start_num": {startNum},
-            "end_num": {endNum}
-        });
-
-        let config = {
-            method: 'post',
-            maxBodyLength: Infinity,
-            url: BaseUrl+'chat/sum_numbers/',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: data
-        };
-
-        axios.request(config)
-            .then((response) => {
-                console.log(JSON.stringify(response.data));
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
-
-    return (
-        <div>
-            <p>Start Number: <input type={"number"} id={"startnum"} onChange={start_num_handler}/></p>
-            <p>End Number: <input type={"number"} id={"endnum"} onChange={end_num_handler}/></p>
-            <p>
-                <button id={"calbtn"} onClick={cal}>Calculate</button>
-            </p>
-            <p>Result: {result}</p>
-        </div>
-    );
+function TopBar() {
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container fluid>
+        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/chatroom">Chat Room</Nav.Link>
+            <Nav.Link href="/sumupnum">Sum Up Number</Nav.Link>
+            <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action5">
+                Something else here
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#" disabled>
+              Link
+            </Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
-export default NumberSumUp;
+export default TopBar;
