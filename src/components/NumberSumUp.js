@@ -17,8 +17,8 @@ function NumberSumUp(props) {
 
     function cal() {
         let data = JSON.stringify({
-            "start_num": {startNum},
-            "end_num": {endNum}
+            "start_num": startNum,
+            "end_num": endNum
         });
 
         let config = {
@@ -34,6 +34,7 @@ function NumberSumUp(props) {
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
+                setResult(response.data.result)
             })
             .catch((error) => {
                 console.log(error);
