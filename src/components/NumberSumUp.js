@@ -48,7 +48,7 @@ function NumberSumUp(props) {
             <p>
                 <button id={"calbtn"} onClick={cal}>Calculate</button>
             </p>
-            <p>Result:<span id ={"calbtn"}> {result}</span></p>
+            <p>Result:<span id ={"result"}> {result}</span></p>
         </div>
     );
 }
