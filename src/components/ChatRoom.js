@@ -3,10 +3,8 @@ import {BaseUrl} from "../consistents";
 import axios from "axios";
 
 function ChatRoom(props) {
-
-    const [chatroom, setChatroom] = useState([])
+    const [chatrooms, setChatrooms] = useState([])
     useEffect(() => {
-
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
@@ -17,24 +15,22 @@ function ChatRoom(props) {
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                setChatroom(response.data)
+                setChatrooms(response.data)
             })
             .catch((error) => {
                 console.log(error);
             });
-
     }, []);
+
     return (
         <div>
             <h1>Chat Room</h1>
             <h1>Test CI</h1>
             <ul>
-                {chatroom.map((chatroom) => (
-                    <li key={chatroom.id}>{chatroom.name}</li>
-                ))}
+                {chatrooms.map((chatroom) => {
+                    return <li key={chatroom.id}>{chatroom.name}</li>
+                })}
             </ul>
-
-
         </div>
     );
 }
