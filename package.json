@@ -41,6 +41,10 @@
     ]
   },
   "devDependencies": {
+    "@eslint/compat": "^1.1.1",
+    "eslint": "^9.7.0",
+    "eslint-plugin-react": "^7.34.3",
+    "globals": "^15.8.0",
     "react-test-renderer": "^18.3.1"
   }
 }
